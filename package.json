@@ -2,7 +2,19 @@
   "name": "@my-workspace/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "proto:generate": "npx protoc --ts_proto_out=./types --ts_proto_opt=nestJs=true --ts_proto_opt=esModuleInterop=true ./proto/*.proto"
+  },
+  "nx": {
+    "targets": {
+      "proto:generate": {
+        "cache": true,
+        "input": [
+          "{workspaceRoot}/proto/**/*.{proto"
+        ]
+      }
+    }
+  },
   "private": true,
   "dependencies": {
     "@grpc/grpc-js": "^1.13.3",
@@ -41,6 +53,7 @@
     "prettier": "^2.6.2",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
+    "ts-proto": "^2.7.0",
     "tslib": "^2.3.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.19.0",
